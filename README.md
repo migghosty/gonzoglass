@@ -31,8 +31,9 @@ Reviews are real customer reviews copied from Thumbtack. To add one, copy a
 `<figure class="pane review">` block in `index.html` and paste in the new text.
 
 ## Photos
-Job photos live in `img/`. The page uses the `*-web.jpg` copies (resized to 900px);
-the originals are kept as the source.
+Job photos live in `img/` (mostly `.webp`). Keep them around 1024px wide so the page
+stays fast. To add one to Our Work, copy a `<figure class="pane photo">` block in
+`index.html` and change the image path, size and caption.
 
 ## Deploying
 Repo Settings → Pages → Deploy from branch → `main` / root. No build step.
