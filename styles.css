@@ -77,6 +77,7 @@ a { color: inherit; }
 .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--navy), 0 12px 24px rgba(0, 0, 0, .35); }
 .btn:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--navy); }
 .btn-small { padding: .45rem 1rem; font-size: .9rem; }
+.btn-big { padding: 1rem 2rem; font-size: 1.25rem; }
 .btn-ghost {
   background: transparent;
   color: var(--sky);
@@ -211,10 +212,39 @@ a { color: inherit; }
 .pane p { margin: 0; color: var(--muted); }
 .icon { font-size: 2.25rem; }
 
-/* ---------- Reviews ---------- */
+/* ---------- Our work ---------- */
 .rating { text-align: center; color: var(--muted); margin: 0 0 2rem; }
-.stars { color: var(--gold); letter-spacing: .15em; }
 
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 1.25rem;
+}
+.photo { padding: .75rem; }
+.photo img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.photo figcaption { margin-top: .6rem; font-weight: 700; color: var(--white); }
+
+.tag {
+  display: inline-block;
+  margin-right: .3rem;
+  padding: .1rem .6rem;
+  border-radius: 999px;
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--gold);
+  vertical-align: middle;
+}
+.tag-before { background: var(--muted); }
+
+/* ---------- Reviews ---------- */
+.stars { color: var(--gold); letter-spacing: .15em; }
 .reviews {
   columns: 3 280px;
   column-gap: 1.25rem;
@@ -228,30 +258,30 @@ a { color: inherit; }
   font-size: 1.05rem;
   color: var(--text);
 }
-.review blockquote::before { content: "“"; color: var(--gold); font-weight: 700; }
-.review blockquote::after { content: "”"; color: var(--gold); font-weight: 700; }
+.review blockquote p { margin: 0 0 .5rem; color: var(--text); }
+.review blockquote p:first-child::before { content: "“"; color: var(--gold); font-weight: 700; }
+.review blockquote p:last-child::after { content: "”"; color: var(--gold); font-weight: 700; }
 .review figcaption { font-weight: 700; color: var(--white); }
-.review figcaption span {
-  display: inline-block;
-  margin-left: .4rem;
-  padding: .1rem .6rem;
-  border-radius: 999px;
-  font-size: .75rem;
-  font-weight: 700;
-  color: var(--navy);
-  background: var(--sky);
-  vertical-align: middle;
-}
+.review figcaption small { display: block; font-weight: 400; color: var(--sky); }
 
 .center { text-align: center; }
-.link { color: var(--sky); font-weight: 700; }
-.link:hover { color: var(--gold); }
 
 /* ---------- CTA ---------- */
 .cta {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  align-items: center;
+  gap: 2rem;
   text-align: center;
-  padding: 3rem 1.5rem;
+  padding: 2rem;
   border: 2px solid var(--gold);
+}
+.cta-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 3px solid var(--gold);
 }
 .cta p { margin: 0 auto 1.5rem; max-width: 32rem; color: var(--text); }
 .cta .small { margin: 1.5rem auto 0; }
@@ -266,6 +296,8 @@ a { color: inherit; }
   border-top: 1px solid rgba(127, 211, 247, .2);
 }
 .footer p { margin: .25rem 0; }
+.phone { color: var(--gold); font-weight: 700; text-decoration: none; }
+.phone:hover { text-decoration: underline; }
 
 /* ---------- Small screens ---------- */
 @media (max-width: 760px) {
@@ -274,6 +306,8 @@ a { color: inherit; }
   .hero p { margin-left: auto; margin-right: auto; }
   .hero-actions { justify-content: center; }
   .topbar nav a:not(.btn) { display: none; }
+  .cta { grid-template-columns: 1fr; padding: 1.5rem; }
+  .cta-photo { max-width: 240px; margin: 0 auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {
