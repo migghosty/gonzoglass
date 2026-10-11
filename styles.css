@@ -264,8 +264,6 @@ a { color: inherit; }
 .review figcaption small { display: block; font-weight: 400; color: var(--sky); }
 
 .center { text-align: center; }
-.link { color: var(--sky); font-weight: 700; }
-.link:hover { color: var(--gold); }
 
 /* ---------- CTA ---------- */
 .cta {
