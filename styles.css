@@ -77,6 +77,7 @@ a { color: inherit; }
 .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--navy), 0 12px 24px rgba(0, 0, 0, .35); }
 .btn:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--navy); }
 .btn-small { padding: .45rem 1rem; font-size: .9rem; }
+.btn-big { padding: 1rem 2rem; font-size: 1.25rem; }
 .btn-ghost {
   background: transparent;
   color: var(--sky);
@@ -284,6 +285,8 @@ a { color: inherit; }
   border-top: 1px solid rgba(127, 211, 247, .2);
 }
 .footer p { margin: .25rem 0; }
+.phone { color: var(--gold); font-weight: 700; text-decoration: none; }
+.phone:hover { text-decoration: underline; }
 
 /* ---------- Small screens ---------- */
 @media (max-width: 760px) {
