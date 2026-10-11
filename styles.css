@@ -1,0 +1,283 @@
+/* Gonzo Glass: colors pulled from the logo */
+:root {
+  --navy: #0a1633;
+  --navy-2: #12285c;
+  --royal: #1f55d6;
+  --sky: #7fd3f7;
+  --gold: #ffd23f;
+  --gold-dark: #f2a900;
+  --white: #ffffff;
+  --text: #e8f1ff;
+  --muted: #a9bde0;
+  --radius: 18px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Nunito", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--navy);
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(127, 211, 247, .18), transparent 40%),
+    radial-gradient(circle at 85% 60%, rgba(31, 85, 214, .35), transparent 45%),
+    linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
+  background-attachment: fixed;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+
+/* ---------- Top bar ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .75rem 1.25rem;
+  background: rgba(10, 22, 51, .75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(127, 211, 247, .2);
+}
+.topbar nav { display: flex; align-items: center; gap: 1.25rem; }
+.topbar nav a { text-decoration: none; font-weight: 700; }
+.topbar nav a:not(.btn):hover { color: var(--gold); }
+
+.brand {
+  font-family: "Lobster", cursive;
+  font-size: 1.75rem;
+  color: var(--gold);
+  text-decoration: none;
+  text-shadow: 2px 2px 0 var(--navy), 3px 3px 0 var(--royal);
+}
+.brand span { color: var(--sky); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: .85rem 1.6rem;
+  border-radius: 999px;
+  border: 2px solid var(--navy);
+  background: linear-gradient(180deg, var(--gold), var(--gold-dark));
+  color: var(--navy);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 0 var(--navy), 0 8px 20px rgba(0, 0, 0, .3);
+  transition: transform .15s, box-shadow .15s;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--navy), 0 12px 24px rgba(0, 0, 0, .35); }
+.btn:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--navy); }
+.btn-small { padding: .45rem 1rem; font-size: .9rem; }
+.btn-ghost {
+  background: transparent;
+  color: var(--sky);
+  border-color: var(--sky);
+  box-shadow: none;
+}
+.btn-ghost:hover { box-shadow: none; background: rgba(127, 211, 247, .12); }
+
+/* ---------- Glass pane (the signature look) ---------- */
+.pane {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(255, 255, 255, .14), rgba(255, 255, 255, .04));
+  border: 1px solid rgba(255, 255, 255, .25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .25), inset 0 1px 0 rgba(255, 255, 255, .3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform .25s, border-color .25s;
+}
+/* Squeegee shine that wipes across the glass on hover */
+.pane::after,
+.window::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .35), transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
+.pane:hover { transform: translateY(-4px); border-color: var(--sky); }
+.pane:hover::after { animation: shine .8s ease; }
+
+@keyframes shine { to { left: 125%; } }
+
+/* ---------- Hero ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(260px, 440px) 1fr;
+  align-items: center;
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 1.25rem 3rem;
+}
+
+/* The logo sits in a "window frame" */
+.window {
+  position: relative;
+  overflow: hidden;
+  padding: 14px;
+  border-radius: 28px;
+  background: var(--white);
+  border: 6px solid var(--navy);
+  outline: 4px solid var(--gold);
+  box-shadow: 0 0 0 10px var(--royal), 0 25px 60px rgba(0, 0, 0, .45);
+  transform: rotate(-2deg);
+}
+.window img { border-radius: 16px; }
+.window::after { animation: window-shine 6s ease-in-out 1s infinite; }
+
+/* Wipe across, then rest before the next pass */
+@keyframes window-shine {
+  0% { left: -75%; }
+  20%, 100% { left: 125%; }
+}
+
+.hero h1 {
+  margin: 0 0 1rem;
+  font-family: "Lobster", cursive;
+  font-weight: 400;
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  line-height: 1.05;
+  color: var(--sky);
+  text-shadow: 3px 3px 0 var(--navy), 5px 5px 0 var(--royal);
+}
+.hero h1 span { color: var(--gold); }
+.hero p { font-size: 1.15rem; color: var(--text); max-width: 34rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
+
+/* ---------- Sections ---------- */
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem;
+}
+
+/* Banner styled like the logo's bottom ribbon */
+.ribbon {
+  margin: 0 auto 2rem;
+  padding: .9rem 1.5rem;
+  max-width: 900px;
+  text-align: center;
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-size: clamp(1rem, 2.4vw, 1.4rem);
+  letter-spacing: .03em;
+  color: var(--white);
+  background: var(--navy);
+  border: 3px solid var(--gold);
+  border-radius: 10px;
+  box-shadow: 0 0 0 6px var(--royal), 0 10px 25px rgba(0, 0, 0, .35);
+}
+
+.title {
+  margin: 0 0 .5rem;
+  text-align: center;
+  font-family: "Lobster", cursive;
+  font-weight: 400;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  color: var(--gold);
+  text-shadow: 2px 2px 0 var(--navy), 4px 4px 0 var(--royal);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 1.25rem;
+}
+.pane h3 {
+  margin: .5rem 0 .25rem;
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  color: var(--sky);
+  letter-spacing: .02em;
+}
+.pane p { margin: 0; color: var(--muted); }
+.icon { font-size: 2.25rem; }
+
+/* ---------- Reviews ---------- */
+.rating { text-align: center; color: var(--muted); margin: 0 0 2rem; }
+.stars { color: var(--gold); letter-spacing: .15em; }
+
+.reviews {
+  columns: 3 280px;
+  column-gap: 1.25rem;
+}
+.review {
+  break-inside: avoid;
+  margin-bottom: 1.25rem;
+}
+.review blockquote {
+  margin: .5rem 0 1rem;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+.review blockquote::before { content: "“"; color: var(--gold); font-weight: 700; }
+.review blockquote::after { content: "”"; color: var(--gold); font-weight: 700; }
+.review figcaption { font-weight: 700; color: var(--white); }
+.review figcaption span {
+  display: inline-block;
+  margin-left: .4rem;
+  padding: .1rem .6rem;
+  border-radius: 999px;
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--navy);
+  background: var(--sky);
+  vertical-align: middle;
+}
+
+.center { text-align: center; }
+.link { color: var(--sky); font-weight: 700; }
+.link:hover { color: var(--gold); }
+
+/* ---------- CTA ---------- */
+.cta {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  border: 2px solid var(--gold);
+}
+.cta p { margin: 0 auto 1.5rem; max-width: 32rem; color: var(--text); }
+.cta .small { margin: 1.5rem auto 0; }
+.cta:hover { transform: none; border-color: var(--gold); }
+
+.small { font-size: .9rem; color: var(--muted); }
+
+/* ---------- Footer ---------- */
+.footer {
+  text-align: center;
+  padding: 2rem 1rem 3rem;
+  border-top: 1px solid rgba(127, 211, 247, .2);
+}
+.footer p { margin: .25rem 0; }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; text-align: center; gap: 2rem; padding-top: 2.5rem; }
+  .window { max-width: 320px; margin: 0 auto; }
+  .hero p { margin-left: auto; margin-right: auto; }
+  .hero-actions { justify-content: center; }
+  .topbar nav a:not(.btn) { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .pane::after, .window::after, .pane:hover::after { animation: none; }
+  .pane, .btn { transition: none; }
+}
