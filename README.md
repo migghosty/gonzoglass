@@ -27,8 +27,12 @@ Link to reviews can be found [here](https://www.thumbtack.com/az/chandler/blind-
 - `img/`: web-sized logo and favicon (the original `logo.png` is kept as the source).
 
 ## Editing Reviews
-The reviews in `index.html` are **samples**. Replace each `<figure class="pane review">`
-block with real customer reviews (e.g. from Thumbtack) before going live.
+Reviews are real customer reviews copied from Thumbtack. To add one, copy a
+`<figure class="pane review">` block in `index.html` and paste in the new text.
+
+## Photos
+Job photos live in `img/`. The page uses the `*-web.jpg` copies (resized to 900px);
+the originals are kept as the source.
 
 ## Deploying
 Repo Settings → Pages → Deploy from branch → `main` / root. No build step.
