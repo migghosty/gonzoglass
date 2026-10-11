@@ -211,10 +211,38 @@ a { color: inherit; }
 .pane p { margin: 0; color: var(--muted); }
 .icon { font-size: 2.25rem; }
 
-/* ---------- Reviews ---------- */
+/* ---------- Our work ---------- */
 .rating { text-align: center; color: var(--muted); margin: 0 0 2rem; }
-.stars { color: var(--gold); letter-spacing: .15em; }
 
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: 1.25rem;
+}
+.photo { padding: .75rem; }
+.photo img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.photo figcaption { margin-top: .6rem; font-weight: 700; color: var(--white); }
+
+.tag {
+  display: inline-block;
+  margin-right: .3rem;
+  padding: .1rem .6rem;
+  border-radius: 999px;
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--gold);
+  vertical-align: middle;
+}
+.tag-before { background: var(--muted); }
+
+/* ---------- Reviews ---------- */
 .reviews {
   columns: 3 280px;
   column-gap: 1.25rem;
@@ -224,24 +252,14 @@ a { color: inherit; }
   margin-bottom: 1.25rem;
 }
 .review blockquote {
-  margin: .5rem 0 1rem;
+  margin: 0 0 1rem;
   font-size: 1.05rem;
   color: var(--text);
 }
 .review blockquote::before { content: "“"; color: var(--gold); font-weight: 700; }
 .review blockquote::after { content: "”"; color: var(--gold); font-weight: 700; }
-.review figcaption { font-weight: 700; color: var(--white); }
-.review figcaption span {
-  display: inline-block;
-  margin-left: .4rem;
-  padding: .1rem .6rem;
-  border-radius: 999px;
-  font-size: .75rem;
-  font-weight: 700;
-  color: var(--navy);
-  background: var(--sky);
-  vertical-align: middle;
-}
+.review figcaption { font-weight: 700; color: var(--sky); }
+.review figcaption::before { content: "— "; }
 
 .center { text-align: center; }
 .link { color: var(--sky); font-weight: 700; }
