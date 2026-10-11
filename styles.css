@@ -243,6 +243,7 @@ a { color: inherit; }
 .tag-before { background: var(--muted); }
 
 /* ---------- Reviews ---------- */
+.stars { color: var(--gold); letter-spacing: .15em; }
 .reviews {
   columns: 3 280px;
   column-gap: 1.25rem;
@@ -252,14 +253,15 @@ a { color: inherit; }
   margin-bottom: 1.25rem;
 }
 .review blockquote {
-  margin: 0 0 1rem;
+  margin: .5rem 0 1rem;
   font-size: 1.05rem;
   color: var(--text);
 }
-.review blockquote::before { content: "“"; color: var(--gold); font-weight: 700; }
-.review blockquote::after { content: "”"; color: var(--gold); font-weight: 700; }
-.review figcaption { font-weight: 700; color: var(--sky); }
-.review figcaption::before { content: "— "; }
+.review blockquote p { margin: 0 0 .5rem; color: var(--text); }
+.review blockquote p:first-child::before { content: "“"; color: var(--gold); font-weight: 700; }
+.review blockquote p:last-child::after { content: "”"; color: var(--gold); font-weight: 700; }
+.review figcaption { font-weight: 700; color: var(--white); }
+.review figcaption small { display: block; font-weight: 400; color: var(--sky); }
 
 .center { text-align: center; }
 .link { color: var(--sky); font-weight: 700; }
