@@ -244,7 +244,7 @@ a { color: inherit; }
 /* ---------- Reviews ---------- */
 .stars { color: var(--gold); letter-spacing: .15em; }
 .reviews {
-  columns: 3 280px;
+  columns: 2 320px;
   column-gap: 1.25rem;
 }
 .review {
